@@ -12,7 +12,7 @@ import java.util.List;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee, Long> {
 
-    @Query("SELECT e FROM Employee e WHERE LOWER(e.name) = LOWER(:Ename)") //JPQL
+    @Query("SELECT e FROM Employee e WHERE LOWER(e.name) LIKE LOWER(:Ename)")
     List<Employee> findByName(@Param("Ename") String name);
     /*
     @Query(value = "SELECT * FROM employee WHERE LOWER(name) = LOWER(:Ename)", nativeQuery = true)
